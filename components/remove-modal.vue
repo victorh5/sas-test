@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-modal :visible="visible" title="Remove HouseRule">
+    <b-modal :visible="visible" title="Remove HouseRule" @close="handleClose" @hide="handleClose">
       <div class="modal-text">
         <span>Do you want to remove this HouseRule?</span>
       </div>
