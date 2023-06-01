@@ -52,6 +52,14 @@ export default {
     baseURL: 'https://sys-dev.searchandstay.com/api/admin'
   },
 
+  router: {
+    middleware: ['auth']
+  },
+
+  bootstrapVue: {
+    icons: true
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     babel: {
