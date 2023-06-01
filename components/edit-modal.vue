@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-modal :visible="visible" :title="title">
+    <b-modal :visible="visible" :title="title" @close="handleClose">
       <div v-if="loading">
         Loading...
       </div>
@@ -9,18 +9,19 @@
           v-model="houseRule.name"
           label="Name"
         />
-        <sas-input
+        <sas-select
           v-model="houseRule.active"
           label="Status"
+          :options="selectOptions"
         />
       </div>
       <template #modal-footer>
-        <b-button variant="danger" @click="handleCancel">
+        <sas-button @callback="handleClose">
           Cancel
-        </b-button>
-        <b-button @click="handleSave">
+        </sas-button>
+        <sas-button secondary @callback="handleSave">
           Save
-        </b-button>
+        </sas-button>
       </template>
     </b-modal>
   </div>
@@ -44,8 +45,9 @@ export default {
     title: 'Register HouseRule',
     houseRule: {
       name: '',
-      active: undefined
+      active: 1
     },
+    selectOptions: [{ label: 'Active', value: 1 }, { label: 'Inactive', value: 0 }],
     loading: false
   }),
   watch: {
@@ -80,7 +82,7 @@ export default {
             title: 'Success',
             variant: 'success'
           })
-          this.$emit('close')
+          this.handleClose()
         } catch (err) {
           this.$bvToast.toast(err.response.data, {
             title: 'Error',
@@ -98,7 +100,7 @@ export default {
             title: 'Success',
             variant: 'success'
           })
-          this.$emit('close')
+          this.handleClose()
         } catch (err) {
           this.$bvToast.toast(err.response.data, {
             title: 'Error',
@@ -107,9 +109,9 @@ export default {
         }
       }
     },
-    handleCancel () {
+    handleClose () {
       this.houseRule.name = ''
-      this.houseRule.active = undefined
+      this.houseRule.active = 1
       this.$emit('close')
     }
   }
@@ -120,5 +122,13 @@ export default {
 .modal-inputs {
   display: grid;
   gap: 1rem;
+}
+.b-pagination .active .page-link {
+  background-color: #FB3B11;
+  border-color: #FB3B11;
+  color: white !important;
+}
+.b-pagination .page-item .page-link {
+  color: #FB3B11;
 }
 </style>
