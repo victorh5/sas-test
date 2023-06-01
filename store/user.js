@@ -13,3 +13,9 @@ export const mutations = {
     state.token = ''
   }
 }
+
+export const getters = {
+  userIsLogged (state) {
+    return state.token
+  }
+}
