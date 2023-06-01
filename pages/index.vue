@@ -23,9 +23,9 @@
             type="password"
           />
 
-          <b-button type="submit" block class="login-button">
+          <sas-button type="submit" block>
             Login
-          </b-button>
+          </sas-button>
         </b-form>
       </b-card-text>
     </b-card>
