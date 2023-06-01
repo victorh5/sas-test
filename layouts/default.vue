@@ -11,16 +11,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .default {
   height: 100vh;
   font-family: 'Montserrat Alternates', sans-serif;
-}
-.navbar {
-  height: 6.125rem;
-  padding: 0.875rem;
-}
-.navbar .logo {
-  height: 100%;
 }
 </style>
