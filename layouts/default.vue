@@ -14,6 +14,7 @@ export default {
 <style>
 .default {
   height: 100vh;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 .navbar {
   height: 6.125rem;
