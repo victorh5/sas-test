@@ -5,12 +5,12 @@
         <span>Do you want to remove this HouseRule?</span>
       </div>
       <template #modal-footer>
-        <b-button variant="danger" @click="handleCancel">
+        <sas-button @callback="handleCancel">
           No
-        </b-button>
-        <b-button @click="handleRemove">
+        </sas-button>
+        <sas-button secondary @callback="handleRemove">
           Yes
-        </b-button>
+        </sas-button>
       </template>
     </b-modal>
   </div>
