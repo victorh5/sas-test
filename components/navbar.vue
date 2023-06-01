@@ -1,9 +1,7 @@
 <template>
   <div class="navbar">
     <img src="~/static/logo_text.png" alt="Logo SAS" class="logo">
-    <sas-button outlined>
-      Logout
-    </sas-button>
+    <b-icon v-if="logged" icon="box-arrow-right" class="logout-icon" @click="logoutUser" />
   </div>
 </template>
 
@@ -24,14 +22,19 @@ export default {
 </script>
 
 <style scoped>
-.logout-button {
-  background-color: transparent;
-  border: 1px solid #FB3B11;
-  color: #FB3B11;
+.navbar {
+  height: 6.125rem;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 2.25rem;
+  padding-block: 1.25rem;
 }
-.logout-button:hover {
-  color: white;
-  background-color: #FB3B11;
-  border: 1px solid #FB3B11;
+.navbar .logo {
+  height: 100%;
+}
+.logout-icon {
+  color: #FB3B11;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 </style>
