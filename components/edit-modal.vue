@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-modal :visible="visible" :title="title" @close="handleClose">
+    <b-modal :visible="visible" :title="title" @close="handleClose" @hide="handleClose">
       <div v-if="loading">
         Loading...
       </div>
