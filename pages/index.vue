@@ -11,7 +11,7 @@
         </div>
       </b-card-title>
       <b-card-text>
-        <b-form @submit="onSubmit">
+        <b-form class="login-form" @submit="onSubmit">
           <sas-input
             v-model="form.email"
             label="Email"
@@ -23,7 +23,7 @@
             type="password"
           />
 
-          <b-button variant="primary" type="submit" class="mt-3">
+          <b-button type="submit" block class="login-button">
             Login
           </b-button>
         </b-form>
@@ -35,8 +35,6 @@
 <script>
 export default {
   name: 'IndexPage',
-  components: {
-  },
   data: () => ({
     form: {
       email: '',
@@ -53,7 +51,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .title {
   height: 4rem;
   display: flex;
@@ -62,5 +60,14 @@ export default {
 }
 .title .pin-logo {
   height: 100%;
+}
+.login-form {
+  display: grid;
+  gap: 0.75rem;
+}
+.login-button {
+  background-color: #FB3B11;
+  border: 1px solid #FB3B11;
+  margin-top: 0.5rem;
 }
 </style>
