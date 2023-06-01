@@ -1,9 +1,9 @@
 <template>
   <div class="navbar">
     <img src="~/static/logo_text.png" alt="Logo SAS" class="logo">
-    <b-button v-if="logged" class="logout-button" @click="logoutUser">
+    <sas-button outlined>
       Logout
-    </b-button>
+    </sas-button>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .logout-button {
   background-color: transparent;
   border: 1px solid #FB3B11;
