@@ -2,7 +2,10 @@
   <div>
     <b-button
       class="normal"
-      :class="[{'outlined': outlined}]"
+      :class="[{'outlined': outlined, 'secondary': secondary}]"
+      :type="type"
+      :block="block"
+      @click="$emit('callback')"
     >
       <slot />
     </b-button>
@@ -15,8 +18,21 @@ export default {
     outlined: {
       type: Boolean,
       default: false
+    },
+    secondary: {
+      type: Boolean,
+      default: false
+    },
+    type: {
+      type: String,
+      default: 'button'
+    },
+    block: {
+      type: Boolean,
+      default: false
     }
-  }
+  },
+  emits: ['callback']
 }
 </script>
 
@@ -29,5 +45,9 @@ export default {
   background-color: transparent;
   border-color: #FB3B11;
   color: #FB3B11;
+}
+.secondary {
+  background-color: #29A744;
+  border-color: #29A744;
 }
 </style>
