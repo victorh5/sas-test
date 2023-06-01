@@ -2,9 +2,9 @@
   <div class="wrapper">
     <div class="top">
       <h1>House Rules</h1>
-      <b-button @click="edit.modal = true">
+      <sas-button secondary @callback="edit.modal = true">
         Register
-      </b-button>
+      </sas-button>
     </div>
     <div>
       <b-table
@@ -23,18 +23,21 @@
           </div>
         </template>
         <template #cell(actions)="data">
-          <b-button @click="handleEdit(data.item.id)">
-            Edit
-          </b-button>
-          <b-button @click="handleRemove(data.item.id)">
-            Remove
-          </b-button>
+          <div class="action-buttons">
+            <sas-button @callback="handleEdit(data.item.id)">
+              Edit
+            </sas-button>
+            <sas-button outlined @callback="handleRemove(data.item.id)">
+              <b-icon icon="trash" />
+            </sas-button>
+          </div>
         </template>
       </b-table>
       <b-pagination
         v-model="currentPage"
         :total-rows="houseRules?.pagination?.total"
         :per-page="houseRules?.pagination?.per_page"
+        align="right"
       />
     </div>
     <edit-modal :visible="edit.modal" :edit-id="edit.id" @close="editModalClose" />
@@ -45,11 +48,12 @@
 <script>
 export default {
   name: 'HouseRulesPage',
+  middleware: ['auth'],
   data: () => ({
     tableFields: [
       { key: 'id', sortable: true },
       { key: 'name', sortable: true },
-      { key: 'active', sortable: true, formatter: value => value === 1 ? 'Ativo' : 'Inativo' },
+      { key: 'active', sortable: true, formatter: value => value === 1 ? 'Active' : 'Inactive' },
       { key: 'actions' }
     ],
     houseRules: {},
@@ -122,5 +126,9 @@ export default {
 .wrapper .top h1 {
   font-size: 28px;
   font-weight: bold;
+}
+.action-buttons {
+  display: flex;
+  gap: 1rem;
 }
 </style>
