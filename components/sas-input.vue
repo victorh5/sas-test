@@ -1,22 +1,21 @@
 <template>
-  <div>
-    <label for="inline-form-input-name">{{ label }}</label>
-    <b-form-input
-      :id="id"
-      :value="modelValue"
+  <div class="input">
+    <label :for="name">{{ label }}</label>
+    <input
+      :id="name"
+      v-model="model"
       :type="type"
-      class="mb-2 mr-sm-2 mb-sm-0"
-      @input="$emit('input', $event)"
-    />
+      :name="name"
+    >
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    modelValue: {
-      type: String,
-      default: ''
+    value: {
+      type: [String, Number],
+      default: undefined
     },
     label: {
       type: String,
@@ -28,14 +27,33 @@ export default {
     }
   },
   computed: {
-    id () {
+    name () {
       return this.label.toLowerCase()
+    },
+    model: {
+      get () {
+        return this.value
+      },
+      set (value) {
+        this.$emit('input', value)
+      }
     }
   },
   methods: {
     updateValue (event) {
-      this.$emit('update:modelValue', event)
+      this.$emit('input', event)
     }
   }
 }
 </script>
+
+<style>
+.input {
+  display: grid;
+}
+.input input {
+  padding: 0.50rem;
+  border-radius: 0.25rem;
+  border: 1px solid black;
+}
+</style>
